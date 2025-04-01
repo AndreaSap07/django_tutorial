@@ -18,8 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('playground/', include('playground.urls')), #I am saying that every request I do in the playground/... is inside the playground app
                                            # Also, since we added it here, in the urls.py of the playground folder it will not be necessary to write 'playground/...' in urlspattern, but just the ...
+    path('pages/', include('pages.urls')),
 ]
