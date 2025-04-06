@@ -1,0 +1,13 @@
+{% extends 'navbar_template.html' %}
+    {% block content %}
+
+        <h1>About</h1>
+        <h2>{{disp_text}}  I am an int variable:{{ disp_num}}</h2>
+
+        <ul>
+            {% for item in disp_list %}
+            <li>{{item}}</li>
+            {% endfor %}
+        </ul>
+
+    {% endblock %}
