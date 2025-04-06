@@ -12,5 +12,7 @@ def home_view(request, *args, **kwargs):
     return render(request, 'home.html', {}) #render(request, 'hello.html', {'name': 'Mario'})
 
 def about_view(request, *args, **kwargs):
-
-    return render(request, 'about.html', {}) 
+    text = {'disp_text': 'I am a string variable!', 
+            'disp_num': 27,
+            'disp_list': [1, 2, 3, 4, 5]}
+    return render(request, 'about.html', text) 
