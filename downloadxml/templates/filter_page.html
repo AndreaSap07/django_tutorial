@@ -1,0 +1,31 @@
+<!-- templates/filter_page.html -->
+<h1>Filter Observations</h1>
+
+<form method="get">
+    <label>Start Date:</label>
+    <input type="datetime-local" name="start_date" value="{{ start_date|default:'' }}">
+
+    <label>End Date:</label>
+    <input type="datetime-local" name="end_date" value="{{ end_date|default:'' }}">
+
+    <h3>Select Entities</h3>
+    {% for ent in entity_choices %}
+        <label>
+            <input type="checkbox" name="antenna" value="{{ ent }}" {% if ent in selected_antennas %}checked{% endif %}>
+            {{ ent }}
+        </label><br>
+    {% endfor %}
+
+    <button type="submit">Apply Filters</button>
+</form>
+
+<hr>
+
+<h2>Filtered Results</h2>
+<ul>
+    {% for obs in PassItems %}
+        <li>{{ obs.utc_start_time  }} - {{ obs.antenna }} - {{ obs.satellite }}</li>
+    {% empty %}
+        <li>No matching data.</li>
+    {% endfor %}
+</ul>
